@@ -1,0 +1,536 @@
+بب<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>وكالة ويب — نصمّم مواقع تبيع، مش بس تبهر</title>
+  <meta name="description" content="وكالة متخصصة في تصميم وتطوير مواقع سريعة وآمنة بواجهات عصرية، من لاندنج بيدج لمنتجات SaaS ومتاجر إلكترونية — SEO + أداء مرتفع + تسليم سريع." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#070a12;--panel:#0c1220;--soft:#0f172a;--text:#e8edf7;--muted:#9aa6c4;--brand:#6c8aff;--brand2:#9aa8ff;--accent:#19e68c;
+      --radius:18px;--shadow:0 18px 48px rgba(0,0,0,.35);--max:1180px
+    }
+    [data-theme="light"]{--bg:#f6f7fb;--panel:#ffffff;--soft:#f3f5fb;--text:#0b1220;--muted:#4b5568}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Cairo',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{max-width:var(--max);margin:auto;padding:0 20px}
+
+    /* Nav */
+    .nav{position:sticky;top:0;z-index:60;background:rgba(7,10,18,.7);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+    [data-theme="light"] .nav{background:rgba(255,255,255,.8);border-color:rgba(15,23,42,.08)}
+    .nav__row{min-height:74px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand img{height:34px;width:auto}
+    .nav__links{display:flex;gap:16px;align-items:center}
+    @media (max-width:900px){.nav__links a{display:none}}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.12);cursor:pointer}
+    .btn--primary{background:linear-gradient(135deg,var(--brand),var(--brand2));border:none;color:#fff;box-shadow:0 12px 30px rgba(108,138,255,.35)}
+    .btn--ghost{background:rgba(255,255,255,.04)}
+    .btn--whatsapp{background:#25D366;border:none;color:#0b0f17}
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate;padding:86px 0 34px}
+    .grid-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+    h1{font-size:clamp(30px,5.2vw,52px);margin:8px 0;line-height:1.1}
+    .lead{color:var(--muted)}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(25,230,140,.12);border:1px solid rgba(25,230,140,.35);color:#b7f9db;font-weight:700}
+    .motion{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid rgba(255,255,255,.10);min-height:340px;background:#0d1324}
+    .motion::before,.motion::after{content:"";position:absolute;inset:-20%;filter:blur(40px);opacity:.9;animation:move 18s linear infinite;
+      background:radial-gradient(600px 280px at 20% 30%, rgba(108,138,255,.35), transparent 60%), radial-gradient(520px 300px at 80% 70%, rgba(153,170,255,.3), transparent 60%)}
+    .motion::after{animation-direction:reverse;animation-duration:22s;background:radial-gradient(420px 220px at 70% 20%, rgba(25,230,140,.28), transparent 60%), radial-gradient(540px 260px at 30% 80%, rgba(108,138,255,.28), transparent 60%)}
+    @keyframes move{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(-6%,4%) rotate(10deg)}100%{transform:translate(6%,-4%) rotate(0)}}
+
+    .section{padding:62px 0}
+    .muted{color:var(--muted)}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);box-shadow:var(--shadow)}
+    [data-theme="light"] .card{background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.01));border-color:rgba(15,23,42,.08)}
+
+    /* Grids */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:980px){.grid-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:700px){.grid-hero,.grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}}
+
+    /* Chips */
+    .chip{display:inline-flex;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);gap:8px}
+
+    /* Pricing */
+    .plan{padding:18px;position:relative}
+    .plan .price{font-size:30px;font-weight:800;margin:6px 0}
+    .tag{position:absolute;top:10px;inset-inline-end:10px;background:rgba(34,197,94,.14);color:#8bf2b1;border:1px solid rgba(34,197,94,.35);padding:6px 10px;border-radius:999px;font-size:12px}
+    .plan ul{padding:0;margin:10px 0 0;list-style:none}
+    .plan li{display:flex;gap:8px;align-items:flex-start}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .gallery img{height:220px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.1)}
+    @media (max-width:980px){.gallery{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.gallery{grid-template-columns:1fr}}
+
+    /* Steps */
+    .step{display:flex;gap:12px}
+    .step .num{width:34px;height:34px;display:grid;place-items:center;border-radius:8px;background:rgba(108,138,255,.16);border:1px solid rgba(108,138,255,.4);font-weight:800}
+
+    /* FAQ */
+    .faq{border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden}
+    .faq details{border-bottom:1px solid rgba(255,255,255,.08)}
+    .faq summary{cursor:pointer;list-style:none;padding:14px 16px}
+    .faq p{margin:0;padding:0 16px 16px;color:var(--muted)}
+
+    footer{border-top:1px solid rgba(255,255,255,.08);padding:26px 0;color:var(--muted);margin-top:30px}
+    .footer-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+
+    /* WhatsApp FAB */
+    .whatsapp-fab{position:fixed;inset-inline-start:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.35);z-index:80}
+    .whatsapp-fab:hover{transform:translateY(-2px)}
+
+    /* Scroll in */
+    .reveal{opacity:0;transform:translateY(12px);transition:.6s ease}
+    .reveal.in{opacity:1;transform:none}
+    /* Shot cards */
+    .shot{position:relative;display:block;height:220px;border-radius:14px;border:1px solid rgba(255,255,255,.1);overflow:hidden;box-shadow:var(--shadow);background:#0d1324}
+    .shot img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease, filter .6s ease}
+    .shot:hover img{transform:scale(1.04)}
+    .shot__label{position:absolute;inset-inline-start:10px;bottom:10px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:6px 10px;border-radius:10px;font-size:12px}
+    [data-theme="light"] .shot__label{background:rgba(255,255,255,.55);color:#0b1220}
+
+    /* Motion canvas + tech chips */
+    .motion canvas{position:absolute;inset:0;width:100%;height:100%}
+    .stack{position:absolute;inset:auto 14px 14px 14px;display:flex;flex-wrap:wrap;gap:8px;z-index:2}
+    .pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+    [data-theme="light"] .pill{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.12)}
+      /* Promo bar + countries + prices */
+    .promo{border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg,rgba(108,138,255,.08),rgba(108,138,255,.05));font-weight:800;text-align:center;color:#cbd6ff}
+    .promo .container{padding:8px 20px}
+    .price s.old{opacity:.6;margin-inline-end:6px}
+    .price .new{background:rgba(25,230,140,.16);border:1px solid rgba(25,230,140,.35);padding:2px 8px;border-radius:10px}
+    .countries{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .country{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+    [data-theme="light"] .country{background:rgba(0,0,0,.04);border-color:rgba(15,23,42,.12)}
+      /* Icon theme toggle (white icons) */
+    .icon-btn{width:44px;height:44px;border-radius:999px;display:inline-grid;place-items:center;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);cursor:pointer;color:#fff}
+    [data-theme="light"] .icon-btn{background:rgba(0,0,0,.04);border-color:rgba(15,23,42,.12)}
+    .icon-btn svg{width:22px;height:22px;display:block}
+    [data-theme="dark"] .icon-sun{display:none}
+    [data-theme="light"] .icon-moon{display:none}
+      /* Coupon UI */
+    .coupon{display:flex;gap:8px;align-items:center;margin:10px 0 16px}
+    .coupon input{flex:1;min-width:220px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:var(--soft);color:var(--text)}
+    .coupon button{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:var(--text);cursor:pointer}
+    .coupon #couponMsg{font-weight:700}
+    .coupon #couponMsg.ok{color:#19e68c}
+    .coupon #couponMsg.err{color:#ff8a8a}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__row">
+      <div class="brand">
+        <img src="logo.png" alt="الشعار" />
+        <span>وكالة ويب</span>
+      </div>
+      <div class="nav__links">
+        <button id="themeToggle" class="icon-btn" aria-label="تبديل الثيم">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 4V2m0 20v-2M4 12H2m20 0h-2M5 5l-1.4-1.4M20.4 20.4L19 19M5 19l-1.4 1.4M20.4 3.6L19 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.6" fill="none"/>
+          </svg>
+        </button>
+        <a href="#work">أعمال</a>
+        <a href="#services">الخدمات</a>
+        <a href="#pricing">الأسعار</a>
+        <a href="#contact" class="btn btn--primary">ابدأ الآن</a>
+      </div>
+    </div>
+    <div class="promo"><div class="container">🎁 خصم <b>30%</b> بكود لفترة محدودة.</div></div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container grid-hero">
+      <div>
+        <span class="hero-badge">مواقع سريعة + SEO + أمان</span>
+        <h1>نصمّم ونبني <u>مواقع تبيع</u> — مش بس تبهر</h1>
+        <p class="lead">من صفحة هبوط ذكية لمتجر كامل أو SaaS — تصميم نظيف، أداء مرتفع، وتجربة مستخدم محسوبة من أول ضغطة.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn btn--primary" href="#pricing">شوف الباقات</a>
+          <a class="btn" href="#work">شغلنا</a>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+          <span class="chip">⚡ تسليم سريع</span>
+          <span class="chip">📈 جاهزية SEO</span>
+          <span class="chip">🔒 أمان قوي</span>
+          <span class="chip">🧩 تكاملات API</span>
+        </div>
+      </div>
+      <div class="motion" aria-label="موشن ويب">
+        <canvas id="heroNet" aria-hidden="true"></canvas>
+        <div class="stack">
+          <span class="pill">&lt;/&gt; Front‑End</span>
+          <span class="pill">React</span>
+          <span class="pill">Next.js</span>
+          <span class="pill">Webflow</span>
+          <span class="pill">SEO</span>
+          <span class="pill">API</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services" class="section reveal">
+    <div class="container">
+      <h2>إحنا بنقدم إيه؟</h2>
+      <p class="muted">خدمات كاملة تبني وجودك الرقمي من الصفر للنمو.</p>
+      <div class="grid-3">
+        <div class="card" style="padding:18px">
+          <h4>Landing Pages</h4>
+          <p class="muted">صفحات مقنعة ومركّزة للتحويل — أسرع طريقة لاختبار فكرة أو عرض.</p>
+        </div>
+        <div class="card" style="padding:18px">
+          <h4>Websites & Blogs</h4>
+          <p class="muted">مواقع شركات ومدونات عالية الأداء بتصميم متجاوب ومتوافق مع محركات البحث.</p>
+        </div>
+        <div class="card" style="padding:18px">
+          <h4>Stores & SaaS</h4>
+          <p class="muted">متاجر إلكترونية ولوحات SaaS مع دفع، عضويات، وصلاحيات مستخدمين.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:16px;margin-top:12px">
+        <b>منصات التطوير:</b> Webflow • WordPress • Next.js • Shopify — وننشر على Vercel/AWS/Cloudflare.
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="section reveal">
+    <div class="container">
+      <h2>عينات من الشغل</h2>
+      <p class="muted">ستايل حديث ومتناسق يناسب البراند.</p>
+      <div class="gallery">
+        <a class="shot" href="https://stripe.com" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.stripe.com?w=1200" alt="Stripe" />
+          <span class="shot__label">Stripe</span>
+        </a>
+        <a class="shot" href="https://linear.app" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Flinear.app?w=1200" alt="Linear" />
+          <span class="shot__label">Linear</span>
+        </a>
+        <a class="shot" href="https://www.figma.com" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.figma.com?w=1200" alt="Figma" />
+          <span class="shot__label">Figma</span>
+        </a>
+        <a class="shot" href="https://www.notion.so" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.notion.so?w=1200" alt="Notion" />
+          <span class="shot__label">Notion</span>
+        </a>
+        <a class="shot" href="https://www.framer.com" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.framer.com?w=1200" alt="Framer" />
+          <span class="shot__label">Framer</span>
+        </a>
+        <a class="shot" href="https://webflow.com" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwebflow.com?w=1200" alt="Webflow" />
+          <span class="shot__label">Webflow</span>
+        </a>
+        <a class="shot" href="https://www.airbnb.com" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.airbnb.com?w=1200" alt="Airbnb" />
+          <span class="shot__label">Airbnb</span>
+        </a>
+        <a class="shot" href="https://www.shopify.com" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.shopify.com?w=1200" alt="Shopify" />
+          <span class="shot__label">Shopify</span>
+        </a>
+        <a class="shot" href="https://www.apple.com" target="_blank" rel="noopener">
+          <img loading="lazy" src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.apple.com?w=1200" alt="Apple" />
+          <span class="shot__label">Apple</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section reveal">
+    <div class="container">
+      <h2>الطريقة اللي بنشتغل بيها</h2>
+      <div class="grid-3">
+        <div class="card" style="padding:16px">
+          <div class="step"><span class="num">1</span><div><b>جلسة فهم سريعة</b><p class="muted">40 دقيقة نحدد الهدف والجمهور وKPIs.</p></div></div>
+        </div>
+        <div class="card" style="padding:16px">
+          <div class="step"><span class="num">2</span><div><b>تصميم وتجربة</b><p class="muted">وايرفريم + UI نظيف متوافق مع البراند.</p></div></div>
+        </div>
+        <div class="card" style="padding:16px">
+          <div class="step"><span class="num">3</span><div><b>تطوير وإطلاق</b><p class="muted">كود نظيف، أداء قوي، ونشر آمن.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section reveal">
+    <div class="container">
+      <h2>باقات مرنة حسب حجم مشروعك</h2>
+      <div class="coupon">
+        <input id="coupon" placeholder="كود خصم (اختياري)" />
+        <button id="applyCoupon" type="button">تفعيل</button>
+        <span id="couponMsg" class="muted"></span>
+      </div>
+      <div class="grid-3">
+        <div class="card plan">
+          <span class="tag">الأفضل للبدايات</span>
+          <h4>Mini</h4>
+          <div class="price" data-base="490">$ 490</div>
+          <ul>
+            <li>صفحة هبوط + نموذج تواصل</li>
+            <li>تحسين سرعة أساسي</li>
+            <li>تجهيز SEO أولي</li>
+          </ul>
+          <a class="btn btn--primary" href="#contact">ابدأ</a>
+        </div>
+        <div class="card plan">
+          <span class="tag">الأكثر طلبًا</span>
+          <h4>Business</h4>
+          <div class="price" data-base="1290">$ 1,290</div>
+          <ul>
+            <li>6–10 صفحات + مدونة</li>
+            <li>تكاملات تحليلات/CRM</li>
+            <li>دعم شهر بعد الإطلاق</li>
+          </ul>
+          <a class="btn btn--primary" href="#contact">ابدأ</a>
+        </div>
+        <div class="card plan">
+          <span class="tag">للشركات</span>
+          <h4>Elite</h4>
+          <div class="price" data-base="3900">$ 3,900</div>
+          <ul>
+            <li>متعدد اللغات + أذونات</li>
+            <li>أداء عالي + مراقبة</li>
+            <li>خطة SEO تقنية</li>
+          </ul>
+          <a class="btn btn--primary" href="#contact">تواصل</a>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">ممكن نعدّل أي باقة حسب احتياجك، والأسعار تقديرية.</p>
+    </div>
+  </section>
+
+  <!-- SUPPORTED REGIONS -->
+  <section id="regions" class="section reveal">
+    <div class="container">
+      <h2>الدول المدعومة حاليًا</h2>
+      <p class="muted">نخدم العملاء في دول الخليج ومصر.</p>
+      <div class="countries">
+        <span class="country">🇸🇦 السعودية</span>
+        <span class="country">🇦🇪 الإمارات</span>
+        <span class="country">🇰🇼 الكويت</span>
+        <span class="country">🇶🇦 قطر</span>
+        <span class="country">🇧🇭 البحرين</span>
+        <span class="country">🇴🇲 عُمان</span>
+        <span class="country">🇪🇬 مصر</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section id="contact" class="section reveal">
+    <div class="container">
+      <div class="card" style="padding:24px">
+        <h2 style="margin:0 0 8px">جاهز نولّع الموقع؟</h2>
+        <p class="muted">ارسل لنا الفكرة بسرعة وسنرجع لك باقتراح واضح وخطة تنفيذ.</p>
+        <form onsubmit="return sendEmail(event)" style="display:grid;gap:10px;max-width:640px">
+          <div class="grid-2">
+            <input id="name" required placeholder="الاسم" style="padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:var(--soft);color:var(--text)" />
+            <input id="email" type="email" required placeholder="البريد" style="padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:var(--soft);color:var(--text)" />
+          </div>
+          <div class="grid-2">
+            <input id="phone" placeholder="هاتف / واتساب" style="padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:var(--soft);color:var(--text)" />
+            <select id="country" style="padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:var(--soft);color:var(--text)">
+              <option selected disabled>اختيار الدولة</option>
+              <option>السعودية</option><option>الإمارات</option><option>الكويت</option><option>قطر</option><option>البحرين</option><option>عُمان</option><option>مصر</option>
+            </select>
+          </div>
+          <textarea id="msg" rows="3" placeholder="وصف مختصر للمشروع" style="padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:var(--soft);color:var(--text)"></textarea>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn--primary" type="submit">إرسال</button>
+            <a id="waBtn" class="btn btn--whatsapp" href="#" target="_blank" rel="noopener">واتساب مباشر</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section reveal">
+    <div class="container">
+      <h2>أسئلة سريعة</h2>
+      <div class="faq card">
+        <details open>
+          <summary>ليه نشتغل معاكم؟</summary>
+          <p>لأننا بنركز على النتيجة: موقع سريع، واضح، ومهيأ للتحويل—مش مجرد شكل حلو. هنحدد هدف واضح ونوصّله بأقل تعقيد.</p>
+        </details>
+        <details>
+          <summary>هل ممكن تعديلات بعد الإطلاق؟</summary>
+          <p>أكيد. بنوفر فترة دعم بعد التسليم، وممكن خطة تطوير شهرية لو حابب توسّع.</p>
+        </details>
+        <details>
+          <summary>إيه منصات الاستضافة؟</summary>
+          <p>ننشر على Vercel أو AWS أو Cloudflare حسب طبيعة المشروع والأولوية (أداء/تكلفة/قابلية توسع).</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-row">
+      <div class="brand"><img src="logo.png" alt="الشعار" /><span>وكالة ويب</span></div>
+      <span>© <span id="year"></span> — كل الحقوق محفوظة.</span>
+      
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a class="whatsapp-fab" href="https://wa.me/201002137288?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%8C%20%D8%B9%D8%A7%D9%8A%D8%B2%20%D9%85%D9%88%D9%82%D8%B9%20%D8%AC%D8%A7%D9%85%D8%AF" target="_blank" rel="noopener" aria-label="تواصل واتساب">
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M16 3C9.37 3 4 8.37 4 15c0 2.12.56 4.1 1.55 5.82L4 29l8.36-1.52C14 28.43 15 29 16 29c6.63 0 12-5.37 12-12S22.63 3 16 3zm6.77 17.2c-.29.82-1.7 1.56-2.36 1.62-.61.06-1.38.09-2.23-.14-.51-.14-1.17-.38-2.02-.74-3.54-1.53-5.84-5.1-6.02-5.32-.18-.22-1.44-1.92-1.44-3.66 0-1.74.92-2.59 1.24-2.95.32-.36.7-.45.93-.45.23 0 .46 0 .66.01.21.01.5-.08.78.6.29.7.99 2.42 1.08 2.6.09.18.15.39.03.62-.12.23-.18.37-.36.57-.18.2-.37.45-.53.61-.18.18-.37.37-.16.73.2.36.89 1.46 1.91 2.37 1.31 1.17 2.42 1.54 2.78 1.72.36.18.57.16.78-.09.21-.25.9-1.05 1.14-1.41.24-.36.48-.3.78-.18.32.12 2.02.95 2.37 1.12.35.18.58.27.66.42.08.14.08.83-.21 1.65z" fill="#0b0f17"/>
+    </svg>
+  </a>
+
+  <script>
+    // hero network motion (canvas)
+    (function(){
+      const canvas=document.getElementById('heroNet');
+      if(!canvas) return; const ctx=canvas.getContext('2d');
+      let dpr=Math.min(2, window.devicePixelRatio||1);
+      function resize(){
+        const r=canvas.getBoundingClientRect();
+        canvas.width=r.width*dpr; canvas.height=r.height*dpr;
+      }
+      window.addEventListener('resize', resize,{passive:true}); resize();
+      const N=60; const nodes=Array.from({length:N},()=>({
+        x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+        vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4, r:2+Math.random()*2
+      }));
+      let raf=null; function tick(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(let i=0;i<N;i++){const a=nodes[i];a.x+=a.vx;a.y+=a.vy; if(a.x<0||a.x>canvas.width) a.vx*=-1; if(a.y<0||a.y>canvas.height) a.vy*=-1;}
+        for(let i=0;i<N;i++) for(let j=i+1;j<N;j++){const a=nodes[i],b=nodes[j];const dx=a.x-b.x,dy=a.y-b.y;const dist=Math.hypot(dx,dy);const max=140*dpr; if(dist<max){const alpha=1-dist/max; ctx.strokeStyle=`rgba(108,138,255,${0.35*alpha})`; ctx.lineWidth=1*dpr; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();}}
+        for(let i=0;i<N;i++){const a=nodes[i]; ctx.fillStyle='rgba(153,170,255,.9)'; ctx.beginPath(); ctx.arc(a.x,a.y,a.r*dpr,0,Math.PI*2); ctx.fill();}
+        raf=requestAnimationFrame(tick);
+      }
+      const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){ if(!raf) tick(); } else { cancelAnimationFrame(raf); raf=null; }})},{threshold:.1});
+      io.observe(canvas);
+    })();
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    
+    // theme toggle (sun/moon)
+    (function(){
+      const themeBtn = document.getElementById('themeToggle');
+      if(themeBtn){
+        themeBtn.addEventListener('click',()=>{
+          const r=document.documentElement;
+          const next = r.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+          r.setAttribute('data-theme', next);
+        });
+      }
+    })();
+
+    // mailto
+    const ENDPOINT_EMAIL = 'PASTE_YOUR_GAS_WEB_APP_URL_HERE'; // حط هنا رابط الويب-آب من Google Apps Script
+
+    function sendEmail(e){
+      e.preventDefault();
+      const form=e.target;
+      const name = document.getElementById('name').value||'';
+      const email = document.getElementById('email').value||'';
+      const phone = document.getElementById('phone').value||'';
+      const country = document.getElementById('country').value||'';
+      const msg = document.getElementById('msg').value||'';
+      const coupon = (document.getElementById('coupon')?.value||'').trim();
+
+      // أرسل مباشرة إلى Gmail عبر Google Apps Script (ضع رابط الويب آب تحت)
+      const payload = {name,email,phone,country,msg,coupon,timestamp:new Date().toISOString()};
+
+      const btn=form.querySelector('button[type="submit"]');
+      const original=btn.textContent; btn.disabled=true; btn.textContent='جارِ الإرسال...';
+
+      fetch(ENDPOINT_EMAIL,{
+        method:'POST',
+        mode:'no-cors',                      // لتفادي CORS في GAS
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      }).then(()=>{
+        btn.textContent='تم الإرسال ✅';
+        form.reset();
+        setTimeout(()=>{btn.disabled=false; btn.textContent=original;},1600);
+      }).catch(()=>{
+        alert('في مشكلة في الإرسال. جرّب تاني.');
+        btn.disabled=false; btn.textContent=original;
+      });
+      return false;
+    }
+
+    // reveal on scroll
+    const obs=new IntersectionObserver((ents)=>{
+      ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}})
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+    (function(){
+      const wa=document.getElementById('waBtn'); if(!wa) return;
+      const els=['name','email','phone','country','msg'].map(id=>document.getElementById(id));
+      function update(){
+        const [n,e,p,c,m]=els.map(x=>x?x.value:'');
+        const txt=`طلب جديد — الاسم: ${n}\nالبريد: ${e}\nالهاتف: ${p}\nالدولة: ${c}\nالتفاصيل: ${m}\nكود الخصم: ${document.getElementById("coupon")?.value||"—"}`;
+        wa.href='https://wa.me/201002137288?text='+encodeURIComponent(txt);
+      }
+      els.forEach(x=>x&&x.addEventListener('input',update)); update();
+    })();
+  
+// Coupon logic (30% when code === 'mostfa')
+(function(){
+  const input=document.getElementById('coupon');
+  const btn=document.getElementById('applyCoupon');
+  const msg=document.getElementById('couponMsg');
+  const prices=[...document.querySelectorAll('.price')];
+
+  function render(discount){
+    prices.forEach(p=>{
+      const base=Number(p.getAttribute('data-base'));
+      if(!base) return;
+      if(discount){
+        const newP=Math.round(base*0.7);
+        p.innerHTML = `<s class="old">$ ${base.toLocaleString()}</s> <span class="new">$ ${newP.toLocaleString()}</span>`;
+      }else{
+        p.textContent = '$ ' + base.toLocaleString();
+      }
+    });
+  }
+
+  function apply(){
+    const code=(input?.value||'').trim().toLowerCase();
+    const ok = code === 'mostfa';
+    msg.textContent = ok ? 'تم تفعيل خصم 30%' : (code? 'الكود غير صالح' : '');
+    msg.className = ok ? 'ok' : (code? 'err' : 'muted');
+    render(ok);
+  }
+
+  if(btn) btn.addEventListener('click', apply);
+  if(input) input.addEventListener('keyup', e=>{ if(e.key==='Enter') apply(); });
+  render(false);
+})();
+</script>
+</body>
+</html>
